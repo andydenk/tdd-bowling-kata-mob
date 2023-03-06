@@ -22,4 +22,22 @@ class GameTest {
 
         assertEquals(5, game.score() - currentScore)
     }
+
+    @Test
+    fun `given a strike, the score should increment by 10`() {
+        val game = Game()
+        val currentScore = game.score()
+        game.roll(10)
+
+        assertEquals(10, game.score() - currentScore)
+    }
+
+    @Test
+    fun `given a strike, the score should increment by 10 and the next rolls should be doubled`() {
+        val game = Game()
+        game.roll(10)
+        game.roll(2)
+        game.roll(5)
+        assertEquals(24, game.score())
+    }
 }
